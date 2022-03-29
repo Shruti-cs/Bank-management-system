@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Withdrawal</title>
+        <meta charset="UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>form {
+       border: 3px solid #f1f1f1;
+       margin: 0 auto;
+       width: 600px;
+       float: center;
+       background-color: white;
+
+}
+body {font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	 background-color:rgb(138, 11, 64);
+	  background-repeat:no repeat;
+	  background-attachment:fixed;
+	  background-size:cover;
+    text-align: center;
+	}
+
+input[type=text], input[type=password] {
+  width: 70%;
+  padding: 13px;;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  backgroung: #f1f1f1;;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color:white;
+  outline: none;
+}
+.modal-content {
+  background-color: white;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: none;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+button {
+  background-color: rgb(138, 11, 64);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  
+}
+
+button:hover {
+  opacity: 1;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: black;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 20%;
+  border-radius: 20%;
+}
+
+.container {
+  padding: 16px;
+  align-text: center;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 500px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: none;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+.icon {
+  padding: 10px;
+  background:black;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+h2{
+  color: white;
+}
+
+</style>
+<script>
+function ValidateFormFields()
+{
+    var email = document.forms["login"]["users_email"];
+    var password = document.forms["login"]["users_pass"];
+
+    
+
+    if (email.value == "")	// OK
+    {
+        window.alert("Please enter a valid e-mail address.");
+        email.focus();
+        return false;
+    }
+    else
+    {
+    	var letters = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    	if (!email.value.match(letters))
+    	{
+        	window.alert("You have entered an invalid email address!");
+        	email.focus();
+        	return false;
+        }
+
+
+    }
+
+
+ 
+
+    if (password.value == "")
+    {
+        window.alert("Please enter your password");
+        password.focus();
+        return false;
+    }
+    else
+    {
+      	var passw=  /^[A-Za-z]\w{7,14}$/;
+	  	if(!password.value.match(passw))
+  		{
+	  		window.alert('Password should have upper and lowercase letters and its width should be in range of 7-14');
+	  		password.focus();
+	  		return false;
+		}
+    }
+
+
+    return true;
+}
+
+</script>
+    </head>
+    <body>
+        
+<h2 style="text-align:center;">Withdrawal</h2>
+
+<form name="login" action="with.jsp" method="post">
+  
+  <div class="container">
+  
+  <label for="amount"><i class="fa fa-money icon"></i></label>
+  <input type="text" name="amount" id="amount" placeholder="enter the amount"/><br /><br />
+        <label for="users_pass"><i class="fa fa-key icon"></i></label>
+    <input type="password" id="users_pass" name="users_pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="enter the password"><br>
+  
+      
+    <button type="submit" onclick="ValidateFormFields()" >Withdraw</button>
+
+ </div>
+
+
+</form>
+
+    </body>
+</html>
+
